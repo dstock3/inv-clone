@@ -1,0 +1,48 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/reset.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(content="width=device-width, initial-scale=1" name="viewport")
+
+  body
+    header
+      div(class="logo")
+        a(href="/products")
+          img(src="/images/home.png" class="logo-img" alt="home icon")
+      h1(class="title") Track Your Products!
+    main
+      div(class="sidebar")
+        h3(class="cat-header") Categories
+        ul(class="cat-list")
+          each cat in category_list
+            if cat.name === thisCat
+              li(class="cat-line-item selected") 
+                a(href=cat.url class="cat-anchor") #{cat.name}
+            else 
+              li(class="cat-line-item") 
+                a(href=cat.url class="cat-anchor") #{cat.name}
+        div(class="dec-line")
+        h3(class="control-header") Control Panel
+        ul(class="control-panel-list")
+          if title === "Create Item"
+            li(class="control-line-item selected")
+              a(href="/products/item/create/" class="control-anchor") Create New Item
+          else 
+            li(class="control-line-item")
+              a(href="/products/item/create/" class="control-anchor") Create New Item
+          if title === "Create Category"
+            li(class="control-line-item selected")
+              a(href="/products/category/create/" class="control-anchor") Create New Category
+          else
+            li(class="control-line-item")
+              a(href="/products/category/create/" class="control-anchor") Create New Category
+      block content
+    footer
+      div(class="attribution")
+        p Created By David Stockdale
+      div(class="social-links")
+        a(href="https://github.com/dstock3/" target="_blank" rel="noopener noreferrer") Github
+        a(href="https://dstock.biz/" target="_blank" rel="noopener noreferrer") Portfolio
+
